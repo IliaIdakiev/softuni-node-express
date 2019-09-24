@@ -4,7 +4,7 @@
 //   // args === [2,3,4];
 // }
 
-test(1, 2, 3, 4);
+// test(1, 2, 3, 4);
 
 
 class EventEmitter {
@@ -24,14 +24,18 @@ class EventEmitter {
     // this.subscriptions[eventName] = this.subscriptions[eventName].concat([cb]);
     // or this.subscriptions[eventName].push(cb); // this mutates the existing array
 
-    const cbIndex = this.subscriptions[eventName].length - 1;
+    // const cbIndex = this.subscriptions[eventName].length - 1;
     return () => {
 
       // spread/rest operator - ...
-      this.subscriptions[eventName] = [
-        ...this.subscriptions[eventName].slice(0, cbIndex),
-        ...this.subscriptions[eventName].slice(cbIndex + 1)
-      ];
+      const index = this.subscriptions[eventName].findIndex(item => item === cb);
+      this.subscriptions[eventName].splice(index, 1);
+
+      // this.subscriptions[eventName] = [
+      //   ...this.subscriptions[eventName].slice(0, cbIndex),
+      //   ...this.subscriptions[eventName].slice(cbIndex + 1)
+      // ];
+
       // same as
       // this.subscriptions[eventName].slice(0, cbIndex)
       //   .concat(this.subscriptions[eventName].slice(cbIndex + 1));
@@ -54,12 +58,14 @@ class EventEmitter {
 
 const emitter = new EventEmitter();
 // const unsub = emitter.on('getData', console.log);
-emitter.on('sendData', data => console.log(data));
-emitter.on('getData', data => console.log(data));
+// emitter.on('sendData', data => console.log(data));
+// emitter.on('getData', data => console.log(data));
 emitter.on('getData', console.log);
-
-emitter.emit('getData', 'Testing...');
-// unsub();
-// console.log('------------------------')
+emitter.once('getData', console.log);
 emitter.once('getData', console.log);
 emitter.emit('getData', 'Testing...');
+emitter.emit('getData', '123');
+// // unsub();
+// // console.log('------------------------')
+// emitter.once('getData', console.log);
+// emitter.emit('getData', 'Testing...');
