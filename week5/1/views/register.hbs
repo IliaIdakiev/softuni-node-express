@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register Page</title>
+  <link href="./css/site.css" type="text/css" rel="stylesheet">
+  <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <ul>
+        <li><img class="logo" src="./images/logo.png"></li>
+        <li><a href="/">Browse</a></li>
+        <li><a href="/create">Add a Cube</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/create/accessory">Add Accessory</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      </ul>
+    </header>
+    <main>
+      <h1>Register Form</h1>
+      <div class="form">
+        <form action='/register' method="POST">
+          {{!-- <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email">
+            {{#if errors.email}}
+            <div class="error">{{ errors.email.message }}</div>
+            {{/if}}
+          </div>
+          </br> --}}
+
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username">
+          {{#if errors.username}}
+          <div class="error">{{ errors.username.message }}</div>
+          {{/if}}
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password">
+          {{#if errors.password}}
+          <div class="error">{{ errors.password.message }}</div>
+          {{/if}}
+
+          <label for="repeatPassword">Re-Password</label>
+          <input type="password" id="repeatPassword" name="repeatPassword">
+          {{#if errors.repeatPassword}}
+          <div class="error">{{ errors.repeatPassword }}</div>
+          {{/if}}
+          <input type="submit" value="Register">
+        </form>
+      </div>
+    </main>
+  </div>
+  <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{
+    "name": "name",
+    "description": "description",
+    "authors": "author",
+    "version": "1.0.0",
+    "main": "pathToMain",
+    "scripts": {
+        "start": "nodemon ."
+    },
+    "dependencies": {
+        "bcrypt": "^3.0.6",
+        "body-parser": "^1.19.0",
+        "cookie-parser": "^1.4.4",
+        "express": "^4.17.1",
+        "express-handlebars": "^3.1.0",
+        "express-validator": "^6.2.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.3.2",
+        "mongoose": "^5.7.3",
+        "uniqid": "^5.0.3",
+        "validator": "^11.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.2"
+    }
+}

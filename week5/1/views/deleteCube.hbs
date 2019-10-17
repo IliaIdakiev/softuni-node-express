@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Cube Page</title>
+  <link href="/css/site.css" type="text/css" rel="stylesheet">
+  <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <ul>
+        <li><img class="logo" src="./images/logo.png"></li>
+        <li><a href="/">Browse</a></li>
+        <li><a href="/create">Add a Cube</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/create/accessory">Add Accessory</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      </ul>
+    </header>
+    <main>
+      <h1>Delete Cube</h1>
+      <div class="form">
+        <form action='/delete/{{cube._id}}' method="POST">
+          <label for="name">Name</label>
+          <input disabled type="text" id="name" name="name" value="{{cube.name}}">
+          <label for="name">Description</label>
+          <textarea disabled id="name" name="description">{{cube.description}}</textarea>
+          <label for="image">ImageUrl</label>
+          <input disabled type="text" id="image" name="imageUrl" value="{{cube.imageUrl}}">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty" name="difficultyLevel" disabled>
+            {{#each options}}
+            {{#if this.selected}}
+            <option value="{{@index}}" selected>{{this.title}}</option>
+            {{else}}
+            <option value="{{@index}}">{{this.title}}</option>
+            {{/if}}
+            {{/each}}
+          </select>
+          <input type="submit" value="Delete">
+        </form>
+      </div>
+    </main>
+  </div>
+  <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+
+</body>
+
+</html>
