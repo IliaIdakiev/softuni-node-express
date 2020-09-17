@@ -14,8 +14,11 @@ class EventEmitter {
   }
 
   on(eventName, cb) {
+    // we have to be sure that we are creating a brand new function so
+    // we can later on search for it (findIndex in the unsubscribe function)
+    const callback = (data) => cb(data);
     this.subscriptions[eventName] =
-      (this.subscriptions[eventName] || []).concat([cb]);
+      (this.subscriptions[eventName] || []).concat([callback]);
 
     // same as 
     // if (!this.subscriptions[eventName]) {
@@ -50,7 +53,11 @@ class EventEmitter {
   }
 
   emit(eventName, data) {
-    (this.subscriptions[eventName] || []).forEach(cb => {
+    // we need to create a new array if the subscription array exists because
+    // otherwise we will be using the same instance that we are modifying whenever we are
+    // unsubscribing which means that when we remove a function we will be skipping the next one
+    // since the index would be incremented
+    (this.subscriptions[eventName].slice() || []).forEach(cb => {
       cb(data);
     });
   }
