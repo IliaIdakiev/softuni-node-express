@@ -16,8 +16,8 @@ module.exports = (app) => {
     app.get('/login', authController.get.login);
     app.post('/login', authController.post.login);
     app.get('/register', authController.get.register);
-    app.post('/register', body(['password', 'repeatPassword'], 'Passwords don\'t match!').custom(([password, repeatPassword]) => {
-        return password === repeatPassword;
+    app.post('/register', body('password', 'Passwords don\'t match!').custom((password, { req }) => {
+        return password === req.body.repeatPassword;
     }), authController.post.register);
     app.get('/logout', authController.get.logout);
 

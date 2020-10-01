@@ -33,6 +33,7 @@ module.exports = {
         });
     },
     register: function (req, res, next) {
+      const { username, password, repeatPassword, email } = req.body;
       let result;
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -41,7 +42,6 @@ module.exports = {
         result = models.userModel.create({ username, password });
       }
 
-      const { username, password, repeatPassword, email } = req.body;
 
       return result.then(() => {
         res.redirect('/login');
