@@ -14,7 +14,7 @@
         "express": "^4.17.1",
         "express-handlebars": "^3.1.0",
         "express-validator": "^6.2.0",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "^9.0.0",
         "mongodb": "^3.3.2",
         "mongoose": "^5.7.3",
         "uniqid": "^5.0.3",
